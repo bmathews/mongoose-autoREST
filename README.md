@@ -49,3 +49,20 @@ app.get('/users/:id', [userRouter.show], function (req, res) {
     var user = req.docs;
 });
 ```
+Complete example (untested)
+-----------------
+
+```
+var mongoose = require('mongoose'),
+    express = require('express'),
+    app = express.createServer(),
+    Schema = mongoose.Schema,
+    router = require('router');
+
+mongoose.model("User", new Schema({
+    firstName: String,
+    lastName: String
+}));
+
+router("User", "users", true, app); 
+```
