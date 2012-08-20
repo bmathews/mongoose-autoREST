@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = function (middleWare, modelName, pathName, autoRoute, app) {
+module.exports = function (modelName, pathName, autoRoute, app, middleWare) {
 	var Model = mongoose.model(modelName),
 		index, create, destroy, update, show, _getQuery;
 
@@ -132,7 +132,7 @@ module.exports = function (middleWare, modelName, pathName, autoRoute, app) {
 		});
 	}
 
-	if (autoRoute && app) {
+	if (autoRoute && app && pathName) {
 		app.get("/" + pathName, middleWare, index);
 		app.get("/" + pathName + "/:id", middleWare, show);
 		app.put("/" + pathName + "/:id", middleWare, update);

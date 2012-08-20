@@ -1,7 +1,8 @@
 mongoose-autoREST
 =================
 
-Auto generate REST apis for mongoose models
+Auto generate basic REST APIs for mongoose models:
+-----------------
 
 ```javascript
 
@@ -9,10 +10,10 @@ Auto generate REST apis for mongoose models
 
 var router = require('./router');
 
-router([], "User", "userss", true, app);
+router([], "User", "users", true, app);
 ```
 
-Creates
+#### Creates
 
 ```
 GET   	/users
@@ -22,10 +23,29 @@ PUT   	/users/:id
 DELETE	/users/:id 
 ```
 
-Mongoose query/options examples
+#### Mongoose query/options examples
  ```
 GET 	/users?query={"firstName": "Bill"}
 GET 	/users?query={"firstName": "Bill", "lastName": "Leegard"}
 GET 	/users?sort=[["firstName, -1"]]
 GET 	/users?fields=["firstName", "lastName"]
+GET     /users?sort=[["firstName, -1"]]&skip=5&limit=10
  ```
+
+
+Use as middleware
+-----------------
+
+```
+var router = require('./router'),
+	userRouter = router("User");
+        
+
+app.get('/users', [userRouter.index], function (req, res) {
+    var allUsers = req.docs;
+});
+
+app.get('/users/:id', [userRouter.show], function (req, res) {
+    var user = req.docs;
+});
+```
