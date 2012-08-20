@@ -6,11 +6,11 @@ Auto generate basic REST APIs for mongoose models:
 
 ```javascript
 
-//router({middleWare}, {modelName}, {path}, {autoRoute}, {expressServer})
+//router({modelName}, {path}, {autoRoute}, {expressServer}, {middleWare})
 
 var router = require('./router');
 
-router([], "User", "users", true, app);
+router("User", "users", true, app);
 ```
 
 #### Creates
