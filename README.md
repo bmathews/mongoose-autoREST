@@ -65,4 +65,6 @@ mongoose.model("User", new Schema({
 }));
 
 router("User", "users", true, app); 
+
+app.listen(3000);
 ```
