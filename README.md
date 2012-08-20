@@ -54,12 +54,10 @@ Complete example (untested)
 
 ```
 var mongoose = require('mongoose'),
-    express = require('express'),
-    app = express.createServer(),
-    Schema = mongoose.Schema,
+    app = require('express').createServer(),
     router = require('router');
 
-mongoose.model("User", new Schema({
+mongoose.model("User", new mongoose.Schema({
     firstName: String,
     lastName: String
 }));
