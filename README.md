@@ -49,6 +49,8 @@ app.get('/users/:id', [userRouter.show], function (req, res) {
     var user = req.docs;
 });
 ```
+
+
 Complete example (untested)
 -----------------
 
