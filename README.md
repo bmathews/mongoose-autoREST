@@ -38,8 +38,7 @@ Use as middleware
 
 ```
 var router = require('./router'),
-	userRouter = router("User");
-        
+    userRouter = router("User");    
 
 app.get('/users', [userRouter.index], function (req, res) {
     var allUsers = req.docs;
