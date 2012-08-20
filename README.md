@@ -51,13 +51,15 @@ app.get('/users/:id', [userRouter.show], function (req, res) {
 ```
 
 
-Complete example (untested)
+Complete example
 -----------------
 
 ```
 var mongoose = require('mongoose'),
     app = require('express').createServer(),
     router = require('router');
+
+mongoose.connect("mongodb://localhost/userdb");
 
 mongoose.model("User", new mongoose.Schema({
     firstName: String,
